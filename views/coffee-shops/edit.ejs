@@ -1,0 +1,14 @@
+<%- include('../partials/header.ejs', {
+    title: 'New Coffee Shop Page'
+}); %>
+
+    <h1>Add New Coffee Shop</h1>
+    <form action="/coffee-shops/<%= coffeeShop._id%>?_method=PUT" method="POST">
+        Name: <input type="text" name="name" value="<%= coffeeShop.name %>"><br>
+        City: <input type="text" name="city" value="<%= coffeeShop.city %>"><br>
+        <button type="submit">Edit</button>
+    </form>
+
+    
+
+<%- include('../partials/footer.ejs')  %>

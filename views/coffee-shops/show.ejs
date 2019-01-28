@@ -1,0 +1,16 @@
+<%- include('../partials/header.ejs', {
+    title: `${coffeeShop.name} Show Page`
+}); %>
+
+    <h1><%= coffeeShop.name %> Show Page </h1>
+
+    <%= coffeeShop.name %><br>
+    <%= coffeeShop.city %><br>
+
+    <a href="/coffee-shops/<%= coffeeShop._id %>/edit">Edit</a>
+    <form action="/coffee-shops/<%= coffeeShop._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Coffee</button>
+    </form>
+
+<%- include('../partials/footer.ejs'); %>
+

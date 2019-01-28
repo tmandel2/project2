@@ -1,0 +1,14 @@
+<%- include('../partials/header', {
+    title: 'Coffee Shop Index'
+}); %>
+
+    <h1>Coffee Shop Index</h1>
+    <ul>
+        <% coffeeShops.forEach( coffeeShop => { %>
+            <li><a href="/coffee-shops/<%= coffeeShop._id %>"><%= coffeeShop.name %></a></li>
+        <% }); %>
+    </ul>
+    <a href="/coffee-shops/new">Add new Coffee Shop</a>
+
+
+<%- include('../partials/footer') %>

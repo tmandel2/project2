@@ -1,0 +1,30 @@
+<%- include('./partials/header.ejs', {
+  title: 'JavaFinder'
+}); %>
+  <header>
+    <h1>JavaFinder</h1>
+  </header>
+  <p>
+    Welcome to JavaFinder!<br>
+  </p>
+
+  <%= message %>
+
+  <h4>Login</h4>
+  <form action="/auth/login" method="POST">
+    <input type="text" name="username" placeholder="Username"><br>
+    <input type="email" name="email" placeholder="Email"><br>
+    <input type="password" name="password" placeholder="Password"><br>
+    <button type="submit">Login</button><br>
+  </form>
+
+  <h4>Registration</h4>
+  <form action="/users" method="POST">
+    <input type="text" name="username" placeholder="Username"><br>
+    <input type="email" name="email" placeholder="Email"><br>
+    <input type="password" name="password" placeholder="Password"><br>
+    <button type="submit">Register</button><br>
+  </form>
+
+
+<%- include('./partials/footer.ejs') %>
