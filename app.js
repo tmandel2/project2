@@ -32,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use((req, res, next) => req.session.logged ? next() : res.redirect('/'));
 app.use('/coffee-shops', coffeeShopRouter);
 
 // catch 404 and forward to error handler

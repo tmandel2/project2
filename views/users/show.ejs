@@ -1,8 +1,22 @@
 <%- include('../partials/header.ejs', {
     title: 'User Display'
 }); %>
+    <nav>
+      <ul>
+        <li><a href="/users/<%=userId%>">Home</a></li>
+        <li><a href="/coffee-shops">Coffee Shop Directory</a></li>
+      </ul>
+    </nav>
 
     <h1>User Page</h1>
+
+    
+    <a href="/coffee-shops/new">Add a Coffee Shop</a>
+    <a href="/users/logout">Logout</a>
+
+    <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Profile</button>
+    </form>
 
 
 

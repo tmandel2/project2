@@ -1,7 +1,12 @@
 <%- include('../partials/header.ejs', {
     title: `${coffeeShop.name} Show Page`
 }); %>
-
+    <nav>
+      <ul>
+        <li><a href="/users/<%=userId%>">Home</a></li>
+        <li><a href="/coffee-shops">Coffee Shop Directory</a></li>
+      </ul>
+    </nav>
     <h1><%= coffeeShop.name %> Show Page </h1>
 
     <%= coffeeShop.name %><br>

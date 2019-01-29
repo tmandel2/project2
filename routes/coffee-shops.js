@@ -9,14 +9,17 @@ router.get('/', (req, res) => {
         } else {
             console.log(allCoffeeShops);
             res.render('../views/coffee-shops/index.ejs', {
-                coffeeShops: allCoffeeShops
+                coffeeShops: allCoffeeShops,
+                userId: req.session.userId
             });
         }
     });
 });
 
 router.get('/new', (req, res) => {
-    res.render('../views/coffee-shops/new.ejs');
+    res.render('../views/coffee-shops/new.ejs', {
+        userId: req.session.userId
+    });
 });
 
 router.post('/', (req, res) => {
@@ -24,6 +27,10 @@ router.post('/', (req, res) => {
         if(err) {
             console.log(err);
         } else {
+            createdCoffee.createdBy = req.session.userId;
+            console.log(req.session);
+            createdCoffee.save();
+            console.log(createdCoffee);
             res.redirect('/coffee-shops');
         }
     });
@@ -35,7 +42,8 @@ router.get('/:id', (req, res) => {
             console.log(err);
         } else {
             res.render('../views/coffee-shops/show.ejs', {
-                coffeeShop: foundCoffeeShop
+                coffeeShop: foundCoffeeShop,
+                userId: req.session.userId
             });
         }
     });
@@ -58,7 +66,8 @@ router.get('/:id/edit', (req, res) => {
             console.log(err);
         } else {
             res.render('../views/coffee-shops/edit.ejs', {
-                coffeeShop: foundCoffeeShop
+                coffeeShop: foundCoffeeShop,
+                userId: req.session.userId
             });
         }
     });

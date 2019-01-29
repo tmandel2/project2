@@ -5,7 +5,7 @@ const usersSchema = mongoose.Schema({
     username: {type: String, unique: true},
     email: String,
     password: String,
-    coffeeShops: CoffeeShop.schema
+    coffeeShops: [CoffeeShop.schema]
 });
 
 const Users = mongoose.model('Users', usersSchema);

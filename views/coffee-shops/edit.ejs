@@ -1,6 +1,12 @@
 <%- include('../partials/header.ejs', {
     title: 'New Coffee Shop Page'
 }); %>
+    <nav>
+      <ul>
+        <li><a href="/users/<%=userId%>">Home</a></li>
+        <li><a href="/coffee-shops">Coffee Shop Directory</a></li>
+      </ul>
+    </nav>
 
     <h1>Add New Coffee Shop</h1>
     <form action="/coffee-shops/<%= coffeeShop._id%>?_method=PUT" method="POST">
