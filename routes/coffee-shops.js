@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const CoffeeShops = require('../models/coffee-shops');
+const User = require('../models/users');
+
 
 router.get('/', (req, res) => {
     CoffeeShops.find({}, (err, allCoffeeShops) => {
@@ -22,18 +24,19 @@ router.get('/new', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-    CoffeeShops.create(req.body, (err, createdCoffee) => {
-        if(err) {
-            console.log(err);
-        } else {
-            createdCoffee.createdBy = req.session.userId;
-            console.log(req.session);
-            createdCoffee.save();
-            console.log(createdCoffee);
-            res.redirect('/coffee-shops');
-        }
-    });
+router.post('/', async (req, res) => {
+    try {
+        const createdShop = await CoffeeShops.create(req.body);
+        const foundUser = await User.findById(req.session.userId);
+        createdShop.createdBy = req.session.userId;
+        createdShop.save();
+        foundUser.coffeeShops.push(createdShop)
+        foundUser.save();
+        res.redirect('/coffee-shops');
+    } catch (err) {
+        console.log(err);
+    }
+    
 });
 
 router.get('/:id', (req, res) => {

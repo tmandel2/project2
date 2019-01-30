@@ -1,19 +1,38 @@
 <%- include('../partials/header', {
     title: 'Coffee Shop Index'
 }); %>
-    <nav>
-      <ul>
-        <li><a href="/users/<%=userId%>">Home</a></li>
-        <li><a href="/coffee-shops">Coffee Shop Directory</a></li>
-      </ul>
-    </nav>
-    <h1>Coffee Shop Index</h1>
-    <ul>
-        <% coffeeShops.forEach( coffeeShop => { %>
-            <li><a href="/coffee-shops/<%= coffeeShop._id %>"><%= coffeeShop.name %></a></li>
-        <% }); %>
-    </ul>
-    <a href="/coffee-shops/new">Add new Coffee Shop</a>
+    <header class="siteHeader">
+        <div class="siteHeaderBckgr"></div>
+        <div class="siteHeaderFrgr">
+            <nav class="siteNav">
+                <ul>
+                <li><a href="/users/<%=userId%>">Home</a>&nbsp&nbsp|</li>
+                <li><a href="/coffee-shops">Coffee Shops</a>&nbsp&nbsp|</li>
+                <li><a href="/users/logout">Logout</a></li>
+                </ul>
+            </nav>
+            <h1>Coffee Shops</h1>
+        </div>
+    </header>
+
+    <main class="siteMain">
+        <ul>
+            <% coffeeShops.forEach(coffeeShop => { %>
+                <li><a href="/coffee-shops/<%= coffeeShop._id %>"><%= coffeeShop.name %></a></li>
+            <% }); %>
+        </ul>
+        <a href="/coffee-shops/new">Add new Coffee Shop</a>
+    </main>
+
+    <footer class="siteFooter">
+        <div class="mediaLinks">
+            <ul>
+                <li><a href="https://github.com/msiller455"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"></a></li>
+                <li><a href="https://www.linkedin.com/in/michaelasiller/"><img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_black-512.png"></a></li>
+                <li><a href="https://www.instagram.com/chum455/"><img src="http://cdn.onlinewebfonts.com/svg/img_465937.png"></a></li>
+            </ul>
+        </div>
+  </footer>
 
 
 <%- include('../partials/footer') %>

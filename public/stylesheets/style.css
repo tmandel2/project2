@@ -6,6 +6,7 @@
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100vh;
 }
 
 /* SPLASH PAGE CSS */
@@ -135,7 +136,7 @@ body {
 #splashFooter {
   position: relative;
   background-color: #FCE14C;
-  height: 240px;
+  height: 142px;
   width: 100%;
   text-align: center;
   clip-path: polygon(0 0, 100% 9vw, 100% 100%, 0 100%);
@@ -191,12 +192,12 @@ body {
   display: flex;
   flex-direction: row;
   top: 40px;
-  right: 40px;
+  right: 120px;
 }
 
 .siteNav ul li{
   list-style: none;
-  padding: 0 15px;
+  padding-right: 12px;
 }
 
 .siteNav ul li a{
@@ -205,8 +206,95 @@ body {
   text-transform: uppercase;
 }
 
+.siteNav ul li a:hover {
+  text-decoration: underline;
+}
+
 .siteHeaderFrgr h1 {
+  font-family: 'Staatliches', cursive;
+  letter-spacing: 8px;
   position: absolute;
-  left: 40px;
-  top: 40px;
+  left: 120px;
+  top: 80px;
+}
+
+.siteMain {
+  margin: 0 50px;
+  height: 55vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#userInfoDisplay {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#userInfoDisplay h4 {
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Staatliches', cursive;
+  letter-spacing: 4px;
+  margin-bottom: 5px;
+}
+
+#userInfo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-evenly;
+}
+
+
+#usersCoffeeShops {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#usersCoffeeShops h4 {
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Staatliches', cursive;
+  letter-spacing: 4px;
+  margin-bottom: 5px;
+}
+
+#usersCoffeeShops ul{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#usersCoffeeShops ul li {
+  list-style: none;
+}
+
+#deleteUserBtn {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+.siteFooter {
+  position: absolute;
+  bottom: 0;
+  background-color: #FCE14C;
+  height: 142px;
+  width: 100%;
+  text-align: center;
+  clip-path: polygon(0 0, 100% 9vw, 100% 100%, 0 100%);
 }
