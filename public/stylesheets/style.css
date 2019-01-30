@@ -8,6 +8,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+/* SPLASH PAGE CSS */
+
 #splashHeader {
   position: relative;
   background-color: #FCE14C;
@@ -23,6 +25,20 @@ body {
   right: 10%;
   top: 30%;
   letter-spacing: 12px;
+}
+
+#splashHeader h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  letter-spacing: 2px;
+}
+
+#splashMessage {
+  text-align: center;
+  margin: 25px;
 }
 
 #splashMain {
@@ -41,7 +57,7 @@ body {
   position: relative;
   height: 170px;
   width: 169px;
-  margin-bottom: 20px;
+  margin: 20px, 0;
   padding: 40px 20px;
   clip-path: polygon(0 0, 100% 2vh, 100% 100%, 0 calc(100% - 2vh));
 }
@@ -61,8 +77,17 @@ body {
   margin: 3px 0;
 }
 
+#login input:focus {
+  border: solid black 2px;
+  background: rgba(219, 193, 65, 0.3);
+}
+
 #login button {
-  
+  margin-top: 5px;
+  font-family: 'Oswald', sans-serif;
+  border-radius: 4px;
+  width: 100%;
+  background: #B89E1F;
 }
 
 #registration {
@@ -94,8 +119,17 @@ body {
   margin: 3px 0;
 }
 
-a {
-  color: #00B7FF;
+#registration input:focus {
+  border: solid black 2px;
+  background: rgba(219, 193, 65, 0.3);
+}
+
+#registration button {
+  margin-top: 5px;
+  font-family: 'Oswald', sans-serif;
+  border-radius: 4px;
+  width: 100%;
+  background: #B89E1F;
 }
 
 #splashFooter {
@@ -107,7 +141,7 @@ a {
   clip-path: polygon(0 0, 100% 9vw, 100% 100%, 0 100%);
 }
 
-#mediaLinks ul {
+.mediaLinks ul {
   display: flex;
   flex-direction: row;
   list-style: none;
@@ -116,11 +150,63 @@ a {
   bottom: 30%;
 }
 
-#mediaLinks ul li {
+.mediaLinks ul li {
   padding: 0 10px;
 }
 
-#mediaLinks img {
+.mediaLinks img {
   height: 30px;
   width: 30px;
+}
+
+/* SITE PAGES CSS */
+
+.siteHeader {
+  position: relative;
+  text-align: center;
+  height: 142px;
+}
+
+.siteHeaderBckgr {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  background-color: #FCE14C;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 9vw));
+}
+
+.siteHeaderFrgr {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  position: absolute;
+  z-index: 1;
+}
+
+.siteNav ul {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  top: 40px;
+  right: 40px;
+}
+
+.siteNav ul li{
+  list-style: none;
+  padding: 0 15px;
+}
+
+.siteNav ul li a{
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+}
+
+.siteHeaderFrgr h1 {
+  position: absolute;
+  left: 40px;
+  top: 40px;
 }
