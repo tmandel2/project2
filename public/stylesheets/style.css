@@ -33,29 +33,65 @@ body {
 }
 
 #login {
-  font-family: 'Oswald', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #FCE14C;
   position: relative;
   height: 170px;
+  width: 169px;
+  margin-bottom: 20px;
   padding: 40px 20px;
   clip-path: polygon(0 0, 100% 2vh, 100% 100%, 0 calc(100% - 2vh));
 }
 
 #login h4 {
-  font-family: 'Prosto One', cursive;
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Staatliches', cursive;
+  letter-spacing: 4px;
+  margin-bottom: 5px;
+}
+
+#login input {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  border: none;
+  margin: 3px 0;
+}
+
+#login button {
+  
 }
 
 #registration {
-  font-family: 'Oswald', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #FCE14C;
-  height: 24vh;
+  position: relative;
+  height: 170px;
+  width: 169px;
   margin-top: 20px;
   padding: 40px 20px;
   clip-path: polygon(0 0, 100% 2vh, 100% 100%, 0 calc(100% - 2vh));
 }
 
 #registration h4 {
-  font-family: 'Prosto One', cursive;
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Staatliches', cursive;
+  letter-spacing: 4px;
+  margin-bottom: 5px;
+}
+
+#registration input {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  border: none;
+  margin: 3px 0;
 }
 
 a {
@@ -69,4 +105,22 @@ a {
   width: 100%;
   text-align: center;
   clip-path: polygon(0 0, 100% 9vw, 100% 100%, 0 100%);
+}
+
+#mediaLinks ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  position: absolute;
+  left: 10%;
+  bottom: 30%;
+}
+
+#mediaLinks ul li {
+  padding: 0 10px;
+}
+
+#mediaLinks img {
+  height: 30px;
+  width: 30px;
 }
