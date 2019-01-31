@@ -9,6 +9,8 @@ router.post('/', async (req, res) => {
   const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   const userDbEntry = {};
   userDbEntry.username = req.body.username;
+  userDbEntry.name = req.body.name;
+  userDbEntry.city = req.body.city;
   userDbEntry.email = req.body.email;
   userDbEntry.password = hashedPassword;
   
@@ -79,6 +81,18 @@ router.delete('/:id', (req, res) => {
     })
     CoffeeShop.deleteMany({_id: {$in: userPosts}}, (err, data) => res.redirect('/'))
   })
+});
+
+router.get('/:id/edit', (req, res) => {
+  Users.findById(req.params.id, (err, foundUser) => {
+      if(err) {
+          console.log(err);
+      } else {
+          res.render('../views/coffee-shops/edit.ejs', {
+              user: foundUser,
+          });
+      }
+  });
 });
 
 module.exports = router;

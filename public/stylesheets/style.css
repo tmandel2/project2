@@ -98,7 +98,7 @@ body {
   justify-content: center;
   background-color: #FCE14C;
   position: relative;
-  height: 170px;
+  height: 225px;
   width: 169px;
   margin-top: 20px;
   padding: 40px 20px;
@@ -142,6 +142,9 @@ body {
   clip-path: polygon(0 0, 100% 9vw, 100% 100%, 0 100%);
 }
 
+
+/* SITE PAGES CSS */
+
 .mediaLinks ul {
   display: flex;
   flex-direction: row;
@@ -159,8 +162,6 @@ body {
   height: 30px;
   width: 30px;
 }
-
-/* SITE PAGES CSS */
 
 .siteHeader {
   position: relative;
@@ -227,6 +228,109 @@ body {
   justify-content: space-around;
 }
 
+.siteMain input {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  border: none;
+  margin: 3px 0;
+}
+
+.siteMain input:focus {
+  border: solid black 2px;
+  background: rgba(219, 193, 65, 0.3);
+}
+
+.siteMain button {
+  margin-top: 5px;
+  font-family: 'Oswald', sans-serif;
+  border-radius: 4px;
+  width: 100%;
+  background: #B89E1F;
+}
+
+#coffeeShopIndex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#newCoffeeMain form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#newCoffeeForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FCE14C;
+  position: relative;
+  height: 240px;
+  width: 169px;
+  margin: 20px, 0;
+  padding: 40px 20px;
+  clip-path: polygon(0 0, 100% 2vh, 100% 100%, 0 calc(100% - 2vh));
+}
+
+#newCoffeeForm h4 {
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Staatliches', cursive;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+#coffeeEditMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#coffeeEditForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FCE14C;
+  position: relative;
+  height: 240px;
+  width: 169px;
+  margin: 20px, 0;
+  padding: 40px 20px;
+  clip-path: polygon(0 0, 100% 2vh, 100% 100%, 0 calc(100% - 2vh));
+}
+
+#coffeeEditForm h4 {
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Staatliches', cursive;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+
+#coffeeShowMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.siteMain a {
+  text-decoration: none;
+  color: black;
+  font-family: 'Prosto One', cursive;
+}
+
+.siteMain a:hover {
+  text-decoration: underline;
+}
+
 #userInfoDisplay {
   height: 100%;
   display: flex;
@@ -274,11 +378,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  list-style-type: none;
 }
 
 #usersCoffeeShops ul li {
-  list-style: none;
-}
+  content: "";
+  display: inline-block;
+
+  }
 
 #deleteUserBtn {
   margin-top: 5vh;

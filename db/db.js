@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const connectionString = 'mongodb://localhost/coffee-shops';
+// const connectionString = 'mongodb://localhost/coffee-shops';
+const connectionString = process.env.DATABASE_URL;
 
 mongoose.connect(connectionString, {
     useCreateIndex: true,

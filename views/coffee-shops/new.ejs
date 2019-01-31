@@ -1,20 +1,39 @@
 <%- include('../partials/header.ejs', {
     title: 'New Coffee Shop Page'
 }); %>
-    <nav>
-      <ul>
-        <li><a href="/users/<%=userId%>">Home</a></li>
-        <li><a href="/coffee-shops">Coffee Shop Directory</a></li>
-      </ul>
-    </nav>
-    <h1>Add New Coffee Shop</h1>
+  <header class="siteHeader">
+    <div class="siteHeaderBckgr"></div>
+    <div class="siteHeaderFrgr">
+        <nav class="siteNav">
+            <ul>
+              <li><a href="/users/<%=userId%>">Home</a>&nbsp&nbsp|</li>
+              <li><a href="/coffee-shops">Coffee Shops</a>&nbsp&nbsp|</li>
+              <li><a href="/users/logout">Logout</a></li>
+            </ul>
+        </nav>
+        <h1>New Coffee Shop Post</h1>
+    </div>
+  </header>
 
-    <form action="/coffee-shops" method="POST">
-        Name: <input type="text" name="name"><br>
-        City: <input type="text" name="city"><br>
-        <button type="submit">Add Coffee Shop</button>
-    </form>
-
+  <main id="newCoffeeMain" class="siteMain">
+    <div id="newCoffeeForm">
+      <h4>Add a Shop!</h4>
+      <form action="/coffee-shops" method="POST">
+          <input type="text" name="name" placeholder="Name"><br>
+          <input type="text" name="city" placeholder="City"><br>
+          <button type="submit">Add Coffee Shop</button>
+      </form>
+    </div>
+  </main>
     
-
+  <footer class="siteFooter">
+    <div class="mediaLinks">
+        <ul>
+            <li><a href="https://github.com/msiller455"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"></a></li>
+            <li><a href="https://www.linkedin.com/in/michaelasiller/"><img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_black-512.png"></a></li>
+            <li><a href="https://www.instagram.com/chum455/"><img src="http://cdn.onlinewebfonts.com/svg/img_465937.png"></a></li>
+        </ul>
+    </div>
+  </footer>
+      
 <%- include('../partials/footer.ejs')  %>

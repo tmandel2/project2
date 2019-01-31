@@ -1,5 +1,5 @@
 <%- include('../partials/header.ejs', {
-    title: 'User Display'
+    title: `${user.username} Home`
 }); %>
 
   <header class="siteHeader">
@@ -12,19 +12,20 @@
           <li><a href="/users/logout">Logout</a></li>
         </ul>
       </nav>
-      <h1><%=user.username%> Home Page</h1>
+      <h1><%=user.username%></h1>
     </div>
   </header>
   
   <main class="siteMain">
+
     <div id ="userInfoDisplay">
       <h4>User Info</h4>
       <div id="userInfo">
-        <p>Name:</p>
-        <p>City:</p>
-        <p>Bio:</p>
+        <p>Name: <%=user.name%></p>
+        <p>City: <%=user.city%></p>
       </div>
     </div>
+
     <div id="usersCoffeeShops">
       <h4>Coffee Shop Posts</h4>
       <ul>

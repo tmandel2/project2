@@ -1,20 +1,40 @@
 <%- include('../partials/header.ejs', {
-    title: 'New Coffee Shop Page'
+    title: `${coffeeShop.name} Edit Page`
 }); %>
-    <nav>
+  <header class="siteHeader">
+    <div class="siteHeaderBckgr"></div>
+    <div class="siteHeaderFrgr">
+      <nav class="siteNav">
+          <ul>
+            <li><a href="/users/<%=userId%>">Home</a>&nbsp&nbsp|</li>
+            <li><a href="/coffee-shops">Coffee Shops</a>&nbsp&nbsp|</li>
+            <li><a href="/users/logout">Logout</a></li>
+          </ul>
+      </nav>
+      <h1><%=coffeeShop.name%> Edit Page</h1>
+    </div>
+  </header>
+
+  <main id="coffeeEditMain" class="siteMain">
+    <div id="coffeeEditForm">
+      <h4>Edit Coffee Shop</h4>
+      <form action="/coffee-shops/<%= coffeeShop._id%>?_method=PUT" method="POST">
+          <input type="text" name="name" value="<%= coffeeShop.name %>"><br>
+          <input type="text" name="city" value="<%= coffeeShop.city %>"><br>
+          <button type="submit">Edit</button>
+      </form>
+    <div>
+  </main>
+
+  <footer class="siteFooter">
+    <div class="mediaLinks">
       <ul>
-        <li><a href="/users/<%=userId%>">Home</a></li>
-        <li><a href="/coffee-shops">Coffee Shop Directory</a></li>
+        <li><a href="https://github.com/msiller455"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"></a></li>
+        <li><a href="https://www.linkedin.com/in/michaelasiller/"><img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_black-512.png"></a></li>
+        <li><a href="https://www.instagram.com/chum455/"><img src="http://cdn.onlinewebfonts.com/svg/img_465937.png"></a></li>
       </ul>
-    </nav>
-
-    <h1>Add New Coffee Shop</h1>
-    <form action="/coffee-shops/<%= coffeeShop._id%>?_method=PUT" method="POST">
-        Name: <input type="text" name="name" value="<%= coffeeShop.name %>"><br>
-        City: <input type="text" name="city" value="<%= coffeeShop.city %>"><br>
-        <button type="submit">Edit</button>
-    </form>
-
+    </div>
+  </footer>
     
 
 <%- include('../partials/footer.ejs')  %>

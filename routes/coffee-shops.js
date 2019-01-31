@@ -52,15 +52,16 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
-    CoffeeShops.findByIdAndRemove(req.params.id, (err, deletedCoffeeShop) => {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log("Hitting");
-            res.redirect('/coffee-shops')
-        }
-    });
+router.delete('/:id', async (req, res) => {
+    try {
+        deletedCoffeeShop = await CoffeeShops.findByIdAndRemove(req.params.id);
+        foundUser = await User.findById(deletedCoffeeShop.createdBy);
+        foundUser.coffeeShops.id(req.params.id).remove();
+        foundUser.save();
+        res.redirect('/coffee-shops');
+    } catch(err) {
+        console.log(err);
+    }
 });
 
 router.get('/:id/edit', (req, res) => {
@@ -76,14 +77,17 @@ router.get('/:id/edit', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
-    CoffeeShops.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, foundCoffeeShop) => {
-        if(err) {
-            console.log(err);
-        } else {
-            res.redirect('/coffee-shops');
-        }
-    });
+router.put('/:id', async (req, res) => {
+    try {
+        updatedCoffeeShop = await CoffeeShops.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        foundUser = await User.findById(updatedCoffeeShop.createdBy);
+        foundUser.coffeeShops.id(req.params.id).remove();
+        foundUser.coffeeShops.push(updatedCoffeeShop);
+        foundUser.save();
+        res.redirect('/coffee-shops');
+    } catch(err) {
+        console.log(err);
+    }
 });
 
 module.exports = router;
