@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
         if(err) {
             console.log(err);
         } else {
-            console.log(allCoffeeShops);
             res.render('../views/coffee-shops/index.ejs', {
                 coffeeShops: allCoffeeShops,
                 userId: req.session.userId
@@ -28,7 +27,7 @@ router.post('/', async (req, res) => {
     try {
         const createdShop = await CoffeeShops.create(req.body);
         const foundUser = await User.findById(req.session.userId);
-        createdShop.createdBy = req.session.userId;
+        createdShop.createdBy = foundUser._id;
         createdShop.save();
         foundUser.coffeeShops.push(createdShop)
         foundUser.save();
@@ -39,17 +38,18 @@ router.post('/', async (req, res) => {
     
 });
 
-router.get('/:id', (req, res) => {
-    CoffeeShops.findById(req.params.id, (err, foundCoffeeShop) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('../views/coffee-shops/show.ejs', {
-                coffeeShop: foundCoffeeShop,
-                userId: req.session.userId
-            });
-        }
-    });
+router.get('/:id', async (req, res) => {
+    try {
+        foundCoffeeShop = await CoffeeShops.findById(req.params.id).populate('createdBy');
+        foundUser = await User.findById(foundCoffeeShop.createdBy);
+        res.render('../views/coffee-shops/show.ejs', {
+            coffeeShop: foundCoffeeShop,
+            user: foundUser,
+            currentUser: req.session.userId
+        });
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 router.delete('/:id', async (req, res) => {

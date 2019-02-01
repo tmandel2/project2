@@ -6,22 +6,24 @@
     <div class="siteHeaderFrgr">
         <nav class="siteNav">
             <ul>
-              <li><a href="/users/<%=userId%>">Home</a>&nbsp&nbsp|</li>
+              <li><a href="/users/<%=currentUser%>">Home</a>&nbsp&nbsp|</li>
               <li><a href="/coffee-shops">Coffee Shops</a>&nbsp&nbsp|</li>
               <li><a href="/users/logout">Logout</a></li>
             </ul>
         </nav>
         <h1><%=coffeeShop.name%></h1>
     </div>
-  </header>
-
-  <main id="coffeeShowMain" class="siteMain">
+    </header>
+    <main id="coffeeShowMain" class="siteMain">
     Name: <%= coffeeShop.name %><br>
     City: <%= coffeeShop.city %><br>
-    <a href="/coffee-shops/<%= coffeeShop._id %>/edit">Edit</a>
-    <form action="/coffee-shops/<%= coffeeShop._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete Coffee</button>
-    </form>
+    Created by: <%= user.username %><br>
+    <% if(currentUser === user._id.toString()){ %>
+      <a href="/coffee-shops/<%= coffeeShop._id %>/edit">Edit</a>
+      <form action="/coffee-shops/<%= coffeeShop._id %>?_method=DELETE" method="POST">
+          <button type="submit">Delete Coffee</button>
+      </form>
+      <% } %>
   </main>
 
   <footer class="siteFooter">

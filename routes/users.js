@@ -16,9 +16,6 @@ router.post('/', async (req, res) => {
   
   try {
     const createdUser = await User.create(userDbEntry);
-    console.log('=====================================');
-    console.log(createdUser);
-    console.log('=====================================');
     req.session.username = createdUser.username;
     req.session.logged = true;
     req.session.userId = createdUser._id;
@@ -75,7 +72,6 @@ router.get('/:id', function(req, res) {
 router.delete('/:id', (req, res) => {
   User.findOneAndDelete({_id: req.params.id}, (err, deletedUser) => {
     const userPosts = [];
-    console.log(deletedUser);
     deletedUser.coffeeShops.forEach(coffeeShop => {
       userPosts.push(coffeeShop)
     })
