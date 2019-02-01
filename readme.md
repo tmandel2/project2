@@ -21,4 +21,4 @@ First you log in or register an account. Then you are free to either post a new 
 
 ## Screenshots
 
-![Wireframing](public/images/IMG_4517.HEIC);
+![Wireframing] (public/images/IMG_4517.HEIC);
