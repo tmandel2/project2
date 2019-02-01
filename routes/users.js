@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
   userDbEntry.city = req.body.city;
   userDbEntry.email = req.body.email;
   userDbEntry.password = hashedPassword;
-  
+   
   try {
     const createdUser = await User.create(userDbEntry);
     req.session.username = createdUser.username;
