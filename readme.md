@@ -21,4 +21,12 @@ First you log in or register an account. Then you are free to either post a new 
 
 ## Screenshots
 
-![Wireframing] (public/images/IMG_4517.HEIC);
+![Splash Page](https://i.imgur.com/hCqcB38.png)
+![User Page](https://i.imgur.com/ZpkccoX.png)
+
+## Future Plans
+
+* Comments
+* Map API implementation
+* Yelp API implementation
+
