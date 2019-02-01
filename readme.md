@@ -4,7 +4,7 @@ JavaFinder is a yelp-style app where users can post their favorite coffee shops 
 
 ## Deployment
 
-Deployment link goes here.
+https://javafinder.herokuapp.com/
 
 ## Tech Used
 
