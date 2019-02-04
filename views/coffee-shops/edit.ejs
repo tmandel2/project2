@@ -18,9 +18,19 @@
   <main id="coffeeEditMain" class="siteMain">
     <div id="coffeeEditForm">
       <h4>Edit Coffee Shop</h4>
-      <form action="/coffee-shops/<%= coffeeShop._id%>?_method=PUT" method="POST">
+      <form action="/coffee-shops/<%= coffeeShop._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
           <input type="text" name="name" value="<%= coffeeShop.name %>"><br>
           <input type="text" name="city" value="<%= coffeeShop.city %>"><br>
+          <img id="newCoffeeShopImg" class="upload-img" 
+          <%if (coffeeShop.image.data) {%>
+            src= "/coffee-shops/<%=coffeeShop._id%>/image"
+          <%} else {%>
+            src= "/images/defaultCoffeeShop.jpg"
+          <%}%> 
+          alt="<%=coffeeShop.name%>">
+          <label>Choose Shop's Picture</label>
+          <label id="editCoffeeShopImg" class="custom">Upload a File<br>
+          <input class="imageFile" type="file" name="imageFile" /></label>
           <button type="submit">Edit</button>
       </form>
     <div>

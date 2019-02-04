@@ -105,13 +105,23 @@ router.get('/:id/edit', (req, res) => {
     });
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', upload.single('imageFile'), async (req, res) => {
     try {
         updatedCoffeeShop = await CoffeeShops.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        if(req.file) {
+            const imageFilePath = './uploads/' + req.file.filename;
+            const newPicture = {};
+            newPicture.image = {};
+            newPicture.image.data = fs.readFileSync(imageFilePath);
+            newPicture.image.contentType = req.file.mimetype;
+            fs.unlinkSync(imageFilePath);
+            updatedCoffeeShop.image = newPicture.image;
+            await updatedCoffeeShop.save();
+        }
         foundUser = await User.findById(updatedCoffeeShop.createdBy);
         foundUser.coffeeShops.id(req.params.id).remove();
         foundUser.coffeeShops.push(updatedCoffeeShop);
-        foundUser.save();
+        await foundUser.save();
         res.redirect('/coffee-shops');
     } catch(err) {
         console.log(err);
