@@ -6,7 +6,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var methodOverride = require('method-override');
 var session = require('express-session');
+const multer = require('multer');
+const fs = require('fs');
 require('./db/db.js');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

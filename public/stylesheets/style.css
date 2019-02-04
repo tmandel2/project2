@@ -269,8 +269,8 @@ body {
   justify-content: center;
   background-color: #FCE14C;
   position: relative;
-  height: 240px;
-  width: 169px;
+  height: 360px;
+  width: 200px;
   margin: 20px, 0;
   padding: 40px 20px;
   clip-path: polygon(0 0, 100% 2vh, 100% 100%, 0 calc(100% - 2vh));

@@ -17,6 +17,15 @@
     <main id="coffeeShowMain" class="siteMain">
     Name: <%= coffeeShop.name %><br>
     City: <%= coffeeShop.city %><br>
+    <div class="show-img">
+      <img class="upload-img" 
+      <%if (coffeeShop.image.data) {%>
+        src= "/coffee-shops/<%=coffeeShop._id%>/image"
+      <%} else {%>
+        src= "/images/defaultCoffeeShop.jpg"
+      <%}%>
+      alt="<%=coffeeShop.name%> picture">
+    </div>
     Created by: <%= user.username %><br>
     <% if(currentUser === user._id.toString()){ %>
       <a href="/coffee-shops/<%= coffeeShop._id %>/edit">Edit</a>

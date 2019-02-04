@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const CoffeeShops = require('../models/coffee-shops');
 const User = require('../models/users');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+const fs = require('fs');
 
 
 router.get('/', (req, res) => {
@@ -23,19 +26,44 @@ router.get('/new', (req, res) => {
     });
 });
 
-router.post('/', async (req, res) => {
+//ADDING MULTER
+router.post('/', upload.single('imageFile'), async (req, res) => {
+    //NEED TO BREAK IT OUT SO MULTER CAN PUT REQUIRED IMAGE INFO IN
+
+    const foundUser = await User.findById(req.session.userId);
+    const createThisShop = {};
+    createThisShop.name = req.body.name;
+    createThisShop.city = req.body.city;
+    createThisShop.createdBy = foundUser._id;
+    createThisShop.menu = req.body.menu;
+    createThisShop.upVote = [];
+    createThisShop.image = {};
+    if (req.file) {
+        const imageFilePath = './uploads/' + req.file.filename;
+        createThisShop.image.data = fs.readFileSync(imageFilePath);
+        createThisShop.image.contentType = req.file.mimetype;
+        fs.unlinkSync(imageFilePath);
+    }
     try {
-        const createdShop = await CoffeeShops.create(req.body);
-        const foundUser = await User.findById(req.session.userId);
-        createdShop.createdBy = foundUser._id;
-        createdShop.save();
+
+        const createdShop = await CoffeeShops.create(createThisShop);
+        await createdShop.save();
         foundUser.coffeeShops.push(createdShop)
-        foundUser.save();
+        await foundUser.save();
         res.redirect('/coffee-shops');
     } catch (err) {
         console.log(err);
     }
     
+});
+
+
+// TO ACCESS THE IMAGES
+router.get('/:id/image', async (req, res) => {
+    const foundCoffeeShop = await CoffeeShops.findById(req.params.id);
+    const image = foundCoffeeShop.image;
+    res.set('Content-Type', image.contentType);
+    res.send(image.data);
 });
 
 router.get('/:id', async (req, res) => {

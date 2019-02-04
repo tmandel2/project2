@@ -18,9 +18,12 @@
   <main id="newCoffeeMain" class="siteMain">
     <div id="newCoffeeForm">
       <h4>Add a Shop!</h4>
-      <form action="/coffee-shops" method="POST">
+      <form action="/coffee-shops" method="POST" enctype="multipart/form-data">
           <input type="text" name="name" placeholder="Name"><br>
           <input type="text" name="city" placeholder="City"><br>
+          <label>Choose Coffee Shop Picture</label>
+          <label id="coffeeShopImg">Upload a File<br>
+          <input class="imageFile" type="file" name="imageFile" /></label>
           <button type="submit">Add Coffee Shop</button>
       </form>
     </div>
