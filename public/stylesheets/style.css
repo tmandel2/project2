@@ -321,6 +321,14 @@ body {
   align-items: center;
 }
 
+.upload-img {
+  max-height: 120px;
+}
+
+#delete-shop {
+  width: 100px;
+}
+
 .siteMain a {
   text-decoration: none;
   color: black;
