@@ -5,7 +5,13 @@ const Schema = mongoose.Schema;
 const coffeeShopSchema = mongoose.Schema({
     name: String,
     city: String,
-    createdBy: {type: Schema.Types.ObjectId, ref: 'Users'}
+    createdBy: {type: Schema.Types.ObjectId, ref: 'Users'},
+    menu: String,
+    upVote: [],
+    image: {
+		data: Buffer,
+		contentType: String
+	}
 });
 
 const CoffeeShop = mongoose.model('CoffeeShop', coffeeShopSchema);

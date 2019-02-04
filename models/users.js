@@ -7,7 +7,13 @@ const usersSchema = mongoose.Schema({
     city: String,
     email: String,
     password: String,
-    coffeeShops: [CoffeeShop.schema]
+    coffeeShops: [CoffeeShop.schema],
+    bio: String,
+    favoriteShop: [],
+    image: {
+		data: Buffer,
+		contentType: String
+	}
 });
 
 const Users = mongoose.model('Users', usersSchema);
