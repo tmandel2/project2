@@ -166,7 +166,7 @@ body {
 .siteHeader {
   position: relative;
   text-align: center;
-  height: 142px;
+  height: 15vh;
 }
 
 .siteHeaderBckgr {
@@ -408,7 +408,7 @@ body {
   position: absolute;
   bottom: 0;
   background-color: #FCE14C;
-  height: 142px;
+  height: 15vh;
   width: 100%;
   text-align: center;
   clip-path: polygon(0 0, 100% 9vw, 100% 100%, 0 100%);
