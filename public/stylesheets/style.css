@@ -150,8 +150,8 @@ body {
   flex-direction: row;
   list-style: none;
   position: absolute;
-  left: 10%;
-  bottom: 30%
+  left: 5%;
+  bottom: 10%
 }
 
 .mediaLinks ul li {
