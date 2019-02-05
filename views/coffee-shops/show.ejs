@@ -26,7 +26,7 @@
         <%}%>
         alt="<%=coffeeShop.name%> picture">
       </div>
-    Created by: <%= user.username %><br>
+    Created by: <a href="/users/<%=user._id%>"><%= user.username %></a>
     <% if(currentUser === user._id.toString()){ %>
       <a href="/coffee-shops/<%= coffeeShop._id %>/edit">Edit</a>
       <form action="/coffee-shops/<%= coffeeShop._id %>?_method=DELETE" method="POST">
