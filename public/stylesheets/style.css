@@ -436,3 +436,7 @@ body {
   text-align: center;
   clip-path: polygon(0 0, 100% 9vw, 100% 100%, 0 100%);
 }
+
+.coffeeShopImg {
+  font-size: 12px;
+}
