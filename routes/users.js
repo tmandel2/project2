@@ -31,7 +31,8 @@ router.post('/', upload.single('imageFile'), async (req, res) => {
     req.session.userId = createdUser._id;
     res.redirect(`/users/${createdUser._id}`);
   } catch (err) {
-    res.send(err);
+    req.session.message = "User Name Already Taken.";
+    res.redirect('/');
   }
 });
 
