@@ -3,8 +3,11 @@ var router = express.Router();
 var User = require('../models/users');
 var CoffeeShop = require('../models/coffee-shops');
 const bcrypt = require('bcryptjs');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+const fs = require('fs');
 
-router.post('/', async (req, res) => {
+router.post('/', upload.single('imageFile'), async (req, res) => {
   const password = req.body.password;
   const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   const userDbEntry = {};
@@ -13,6 +16,13 @@ router.post('/', async (req, res) => {
   userDbEntry.city = req.body.city;
   userDbEntry.email = req.body.email;
   userDbEntry.password = hashedPassword;
+  userDbEntry.image = {};
+  if (req.file) {
+    const imageFilePath = './uploads/' + req.file.filename;
+    userDbEntry.image.data = fs.readFileSync(imageFilePath);
+    userDbEntry.image.contentType = req.file.mimetype;
+    fs.unlinkSync(imageFilePath);
+  }
    
   try {
     const createdUser = await User.create(userDbEntry);
@@ -59,6 +69,14 @@ router.get('/logout', (req, res) => {
     }
   });
 });
+
+router.get('/:id/image', async (req, res) => {
+    const foundUser = await User.findById(req.params.id);
+    const image = foundUser.image;
+    res.set('Content-Type', image.contentType);
+    res.send(image.data);
+});
+
 
 router.get('/:id', function(req, res) {
   User.findById(req.params.id, (err, foundUser) => {

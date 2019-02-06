@@ -23,6 +23,15 @@
       <div id="userInfo">
         <p>Name: <%=user.name%></p>
         <p>City: <%=user.city%></p>
+        <div class="show-img">
+          <img class="upload-img" 
+          <%if (user.image.data) {%>
+            src= "/users/<%=user._id%>/image"
+          <%} else {%>
+            src= "/images/defaultCoffeeShop.jpg"
+          <%}%>
+          alt="<%=user.name%> picture">
+        </div>
       </div>
     </div>
 
