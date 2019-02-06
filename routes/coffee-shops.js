@@ -107,11 +107,21 @@ router.get('/:id/edit', (req, res) => {
 
 router.put('/:id/upvote', async (req, res) => {
     try {
+        let alreadyVoted = false;
         // finding creator
         const foundShop = await CoffeeShops.findById(req.params.id);
-        foundShop.upVote.push(req.session.userId);
-        await foundShop.save();
-        res.redirect(`/coffee-shops/${req.params.id}`)
+        for (let i = 0; i < foundShop.upVote.length; i++) {
+            if (foundShop.upVote[i].toString() === req.session.userId.toString()){
+                alreadyVoted = true;
+            }
+        }
+        if (alreadyVoted) {
+            res.redirect(`/coffee-shops/${req.params.id}`)
+        } else {
+            foundShop.upVote.push(req.session.userId);
+            await foundShop.save();
+            res.redirect(`/coffee-shops/${req.params.id}`)
+        }
     } catch (err) {
         res.send(err)
     }
