@@ -105,6 +105,18 @@ router.get('/:id/edit', (req, res) => {
     });
 });
 
+router.put('/:id/upvote', async (req, res) => {
+    try {
+        // finding creator
+        const foundShop = await CoffeeShops.findById(req.params.id);
+        foundShop.upVote.push(req.session.userId);
+        await foundShop.save();
+        res.redirect(`/coffee-shops/${req.params.id}`)
+    } catch (err) {
+        res.send(err)
+    }
+});
+
 router.put('/:id', upload.single('imageFile'), async (req, res) => {
     try {
         updatedCoffeeShop = await CoffeeShops.findByIdAndUpdate(req.params.id, req.body, {new: true});

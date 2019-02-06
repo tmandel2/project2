@@ -17,6 +17,7 @@
     <main id="coffeeShowMain" class="siteMain">
     Name: <%= coffeeShop.name %><br>
     City: <%= coffeeShop.city %><br><br>
+    Upvotes!: <%=coffeeShop.upVote.length%><br>
       <div class="show-img">
         <img class="upload-img" 
         <%if (coffeeShop.image.data) {%>
@@ -27,6 +28,11 @@
         alt="<%=coffeeShop.name%> picture">
       </div><br>
     Created by: <a href="/users/<%=user._id%>"><%= user.username %></a><br>
+    <%if(currentUser) {%>
+      <form action="/coffee-shops/<%=coffeeShop._id%>/upvote?_method=PUT" method="POST">
+        <button id="upvote">UpVote!</button>
+      </form>
+    <%}%>
     <% if(currentUser === user._id.toString()){ %>
       <a href="/coffee-shops/<%= coffeeShop._id %>/edit">Edit</a>
       <form action="/coffee-shops/<%= coffeeShop._id %>?_method=DELETE" method="POST">
