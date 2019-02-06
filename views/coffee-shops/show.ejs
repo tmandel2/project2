@@ -32,6 +32,9 @@
       <form action="/coffee-shops/<%=coffeeShop._id%>/upvote?_method=PUT" method="POST">
         <button id="upvote">UpVote!</button>
       </form>
+      <form action="/coffee-shops/<%=coffeeShop._id%>/favorite?_method=PUT" method="POST">
+        <button id="favorite">Make Favorite</button>
+      </form>
     <%}%>
     <% if(currentUser === user._id.toString()){ %>
       <a href="/coffee-shops/<%= coffeeShop._id %>/edit">Edit</a>

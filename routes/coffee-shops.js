@@ -127,6 +127,18 @@ router.put('/:id/upvote', async (req, res) => {
     }
 });
 
+router.put('/:id/favorite', async (req, res) => {
+    try {
+        const foundShop = await CoffeeShops.findById(req.params.id);
+        const foundUser = await User.findById(req.session.userId);
+        foundUser.favoriteShop = foundShop._id;
+        await foundUser.save();
+        res.redirect(`/coffee-shops/${req.params.id}`);
+    } catch (err) {
+        console.log(err);
+    }
+})
+
 router.put('/:id', upload.single('imageFile'), async (req, res) => {
     try {
         updatedCoffeeShop = await CoffeeShops.findByIdAndUpdate(req.params.id, req.body, {new: true});

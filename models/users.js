@@ -9,7 +9,7 @@ const usersSchema = mongoose.Schema({
     password: String,
     coffeeShops: [CoffeeShop.schema],
     bio: String,
-    favoriteShop: [],
+    favoriteShop: String,
     image: {
 		data: Buffer,
 		contentType: String

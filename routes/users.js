@@ -78,13 +78,21 @@ router.get('/:id/image', async (req, res) => {
 });
 
 
-router.get('/:id', function(req, res) {
-  User.findById(req.params.id, (err, foundUser) => {
+router.get('/:id', async (req, res) => {
+  let foundShop = '';
+  try {
+    const foundUser = await User.findById(req.params.id);
+    if (foundUser.favoriteShop) {
+      foundShop = await  CoffeeShop.findById(foundUser.favoriteShop)
+    }
     res.render('../views/users/show.ejs', {
-      user: foundUser,
-      userId: req.session.userId
-    });
-  });
+          user: foundUser,
+          userId: req.session.userId,
+          shop: foundShop
+        });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.delete('/:id', (req, res) => {
